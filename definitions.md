@@ -6,43 +6,51 @@ This is the server that hosts the application.
 
 ## End User Application
 
-This is the application used by the end user to connect to the application server and to interact with it.
+This is the application used by the end user to connect to the [Application Server](#application-server) and to interact with it.
 
 ## Push Message
 
-This is the content that the application server is sending to the end user application.
+This is the content that the [Application Server](#application-server) 
+wants to send to the [end user Application](#end-user-application).
 
 ## Push System
 
-This is the whole system used to deliver the push message from the application server to the end user application.
+This is the whole system used to deliver the [push messages](#Push-Message) 
+from the [Application Server](#application-server) 
+to the [end user Application](#end-user-application).
 
 ## Application Push Protocol
 Or Application Server Protocol
 
-This is the protocol the application server use to send push message. This is usually either the Provider Receiving Protocol or the Gateway Receiving Protocol.
-
-## Provider Receiving Protocol
-
-This is the protocol the Push Provider use to receive push message.
-
-## Provider Push Protocol
-
-This is the protocol the Push Provider use to send push message to the distributor application.
-
-## Distributor Receiving Protocol
-
-This refers to the provider push protocol except if the distributor application act as a push provider, then this refers to the provider receiving protocol.
+This is the protocol the application server uses to send [push messages](#push-message). 
 
 ## Push Gateway
 Or Gateway
 
-This is the server or programm the application server sends push messages to with its application push protocol. 
+If the [application push protocol](#application-push-protocol) and the [Provider Receiving Protocol](#provider-receiving-protocol) are the same, and the [Application Server](#application-server) can reach the [Push Provider](#push-provider), then the gateway is not necessary.
 
-It is used to convert the application push protocol to the provider receiving protocol. 
+If this is not the case the Push Gateway is needed for conversion and/or proxieing. 
+The [application server](#application-server) sends [push messages](#push-message) via the [application push protocol](#application-push-protocol) to the Push Gateway for conversion to the [Provider Receiving Protocol](#provider-receiving-protocol).
 
-If the application push protocol and the provider receiving protocol are the same, and the application server can reach the push provider, then the gateway is not necessary, and the gateway will refer to the push provider.
+If the application server can not reach the push provider the Push Gateway can also act as a normal Proxy, even if the [application push protocol](#application-push-protocol) and the [Provider Receiving Protocol](#provider-receiving-protocol) are the same.
 
-If the application push protocol and the provider receiving protocol are the same, but the application server can not reach the push provider, then the gateway do not have to modify the request but have to forward it. In this case it can be called a proxy.
+## Provider Receiving Protocol
+
+This is the protocol the [Push Provider](#push-provider) uses to receive [push messages](#push-message).
+
+## Provider Push Protocol
+
+This is the protocol the [Push Provider](#push-provider) uses to send [push messages](#push-message) to the [Distributor Application](## Distributor Application).
+
+## Distributor Receiving Protocol
+
+This is the protocol the [Distributor Application](#distributor-application) 
+uses to recive [push messages](#push-message) from the [Push Provider](#push-provider). 
+So it is the same as the [Provider Push Protocol](#provider-push-protocol), 
+except if the [Distributor Application](#distributor-application) 
+acts as the [Push Provider](#push-provider), 
+then there is no [Provider Push Protocol](#provider-push-protocol) 
+and this is just the [Provider Receiving Protocol](#provider-receiving-protocol).
 
 ## Rewrite Proxy
 
@@ -59,7 +67,7 @@ This is the server that listen for incoming push messages using its provider rec
 ## Distributor Application
 Or Distributor
 
-This is the application that forward push messages to the registered end user application. It is the application which is connected to the push provider.
+This is the application that forwards push messages to the registered end user application. It is the application which is connected to the push provider.
 
 ## Connector Library
 Or Connector
